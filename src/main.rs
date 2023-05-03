@@ -1,7 +1,9 @@
 use sdl2::event::Event;
 use sdl2::keyboard::Keycode;
-use sdl2::pixels::Color;
+use sdl2::pixels::{Color, PixelFormatEnum};
 use std::time::Duration;
+
+mod entity;
 
 pub fn main() {
 	let sdl_context = sdl2::init().unwrap();
@@ -15,15 +17,22 @@ pub fn main() {
 
 	let mut canvas = window.into_canvas().build().unwrap();
 
-	canvas.set_draw_color(Color::RGB(0, 255, 255));
+	let mut ents = vec![entity::Looper::new()];
+
 	canvas.clear();
 	canvas.present();
 	let mut event_pump = sdl_context.event_pump().unwrap();
 	let mut i = 0;
 	'running: loop {
 		i = (i + 1) % 255;
-		canvas.set_draw_color(Color::RGB(i, 64, 255 - i));
+		canvas.set_draw_color(Color::BLACK);
 		canvas.clear();
+
+		for e in &mut ents {
+			e.tick(1.0 / 60.0);
+			e.draw(&mut canvas);
+		}
+
 		for event in event_pump.poll_iter() {
 			match event {
 				Event::Quit { .. }
