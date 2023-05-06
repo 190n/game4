@@ -4,7 +4,7 @@ use notan::{
 	prelude::*,
 };
 
-use crate::entity::{Backdrop, Entity, Fps};
+use crate::entity::{Backdrop, Entity, Fps, Ship};
 
 #[derive(AppState)]
 pub struct Manager {
@@ -14,7 +14,7 @@ pub struct Manager {
 impl Manager {
 	pub fn new() -> Manager {
 		Manager {
-			entities: vec![Fps::new(), Backdrop::new()],
+			entities: vec![Fps::new(), Backdrop::new(), Ship::new()],
 		}
 	}
 

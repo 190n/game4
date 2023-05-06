@@ -1,7 +1,9 @@
 use notan::{draw::*, prelude::*};
 
+use config::WINDOW_SIZE;
 use manager::Manager;
 
+mod config;
 mod entity;
 mod manager;
 
@@ -21,5 +23,5 @@ fn main() -> Result<(), String> {
 }
 
 fn initialize(app: &mut App) {
-	app.window().set_size(640, 640);
+	app.window().set_size(WINDOW_SIZE, WINDOW_SIZE);
 }

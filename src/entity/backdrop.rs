@@ -1,8 +1,10 @@
-use super::{Behavior, Entity, EntityCommon};
 use notan::{
 	draw::{Draw, DrawShapes},
 	prelude::Color,
 };
+
+use super::{Behavior, Entity, EntityCommon};
+use crate::config::{SKY_HEIGHT, WORLD_SIZE};
 
 pub struct Backdrop;
 
@@ -15,10 +17,10 @@ impl Backdrop {
 impl Behavior for Backdrop {
 	fn draw(&self, _ent: &EntityCommon, draw: &mut Draw) -> () {
 		// sky
-		draw.rect((0.0, 0.0), (640.0, 128.0))
+		draw.rect((0.0, 0.0), (WORLD_SIZE, SKY_HEIGHT))
 			.color(Color::from_hex(0x80a0ffff));
 		// ocean
-		draw.rect((0.0, 128.0), (640.0, 512.0))
+		draw.rect((0.0, SKY_HEIGHT), (WORLD_SIZE, WORLD_SIZE - SKY_HEIGHT))
 			.color(Color::from_hex(0x002080ff));
 	}
 

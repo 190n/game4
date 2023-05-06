@@ -2,9 +2,11 @@ use notan::draw::Draw;
 
 mod backdrop;
 mod fps;
+mod ship;
 
 pub use backdrop::Backdrop;
 pub use fps::Fps;
+pub use ship::Ship;
 
 pub trait Behavior {
 	fn tick(&mut self, ent: &mut EntityCommon, dt: f32) -> ();
