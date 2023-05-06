@@ -6,4 +6,5 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-notan = "0.9.5"
+# notan = "0.9.5"
+notan = { git = "https://github.com/Nazariglez/notan.git", branch = "log/size" }
